@@ -14,19 +14,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personaje implements Serializable {
+public class Pelicula implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IDpersonaje;
+    private Long IDpelicula;
     private Byte[] imagen;
-    private String nombre;
-    private Integer edad;
-    private Double peso;
-    private String historia;
+    private String titulo;
+    private String fechaCreacion;
+    private Integer calificacion;
     @ManyToMany
-    private List<Pelicula> peliculas;
-
+    private List<Personaje> personajesAsociados;
 
 
 
