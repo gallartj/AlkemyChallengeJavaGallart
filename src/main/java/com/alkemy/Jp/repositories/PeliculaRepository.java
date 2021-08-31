@@ -1,6 +1,6 @@
 package com.alkemy.Jp.repositories;
 
-import com.alkemy.Jp.entities.Personaje;
+import com.alkemy.Jp.entities.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,11 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonajeRepository extends JpaRepository<Personaje, Long> {
+public interface PeliculaRepository extends JpaRepository<Pelicula,Long> {
 
-
-    @Query("Select p.nombre,p.imagen from Personaje p")
-    List<String> mostrarnombre();
+    @Query("SELECT p.imagen, p.titulo, p.fechaCreacion from Pelicula p")
+    List<String> mostrar();
 
 
 

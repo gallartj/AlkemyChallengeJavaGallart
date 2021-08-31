@@ -15,27 +15,38 @@ public class PersonajeService {
 
 
     @Transactional
-    public void crear(Long IDpersonaje,Byte[] imagen,String nombre,Integer edad, Double peso, String historia){
+    public Personaje crear(Personaje personaje){
         Personaje p = new Personaje();
-        p.setIDpersonaje(IDpersonaje);
-        p.setImagen(imagen);
-        p.setNombre(nombre);
-        p.setEdad(edad);
-        p.setPeso(peso);
-        p.setHistoria(historia);
+        p.setIdPersonaje(personaje.getIdPersonaje());
+        p.setImagen(personaje.getImagen());
+        p.setNombre(personaje.getNombre());
+        p.setEdad(personaje.getEdad());
+        p.setPeso(personaje.getPeso());
+        p.setHistoria(personaje.getHistoria());
         prepository.save(p);
+        return p;
+    }
+
+
+    @Transactional
+    public List<String> mostrar(){
+        return prepository.mostrarnombre();
     }
 
     @Transactional
-    public List<Personaje> buscarTodos(){
-        return prepository.findAll();
+    public void eliminar(Long id){
+        prepository.deleteById(id);
     }
 
     @Transactional
-    public List<Personaje> MostrarNombreImagen(){
-        return prepository.mostrarnombreimagen();
+    public Personaje buscarPorId(Long id){
+       return prepository.findById(id).orElse(null);
     }
 
+    @Transactional
+    public void editar(Personaje personaje){
+         prepository.save(personaje);
+    }
 
 
 

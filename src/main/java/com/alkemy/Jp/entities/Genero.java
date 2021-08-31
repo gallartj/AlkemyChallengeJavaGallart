@@ -1,9 +1,7 @@
 package com.alkemy.Jp.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +9,8 @@ import java.util.List;
 
 @Entity
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Genero implements Serializable {
@@ -20,7 +19,7 @@ public class Genero implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IDgenero;
     private String nombre;
-    private Byte[] imagen;
+    private String imagen;
     @OneToMany
     private List<Pelicula> peliculasAsociadas;
 
