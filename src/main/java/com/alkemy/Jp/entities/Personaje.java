@@ -1,6 +1,7 @@
 package com.alkemy.Jp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Personaje implements Serializable {
     private Integer edad;
     private Double peso;
     private String historia;
+    @JsonIgnore
     @ManyToMany(mappedBy = "personajes")
     private List<Pelicula> peliculas;
 

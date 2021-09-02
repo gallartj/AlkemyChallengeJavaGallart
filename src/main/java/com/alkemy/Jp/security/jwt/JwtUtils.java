@@ -3,15 +3,12 @@ package com.alkemy.Jp.security.jwt;
 
 
 import com.alkemy.Jp.security.services.UserDetailsImp;
-import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-
-import java.security.SignatureException;
 import java.util.Date;
 
 @Component

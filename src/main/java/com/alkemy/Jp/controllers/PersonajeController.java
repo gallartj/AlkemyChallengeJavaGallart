@@ -34,8 +34,19 @@ public class PersonajeController {
 
     //Trae el listado de todos los personajes con los atributos Imagen y nombre.
     @GetMapping()
-    public List<String> buscarTodos(String nombre, Integer edad, List<Pelicula> peliculas) {//check punto 6
-        return pservice.mostrar();
+    public ResponseEntity<List<Personaje>> buscarTodos(@RequestParam(required = false)String nombre,
+                                    @RequestParam(required = false) Integer edad,
+                                    @RequestParam(required = false) List<Pelicula> peliculas) {
+        if (nombre != null) {
+            return ResponseEntity.ok(pservice.mostrarPersonajes(nombre));
+        }
+        if (edad != null) {
+            return ResponseEntity.ok(pservice.mostrarPersonajes(edad));
+        }
+        if (peliculas != null) {
+            return ResponseEntity.ok(pservice.mostrarPersonajes(peliculas));
+        }
+        return ResponseEntity.ok(pservice.mostrarPersonajes(null));
     }
 
 

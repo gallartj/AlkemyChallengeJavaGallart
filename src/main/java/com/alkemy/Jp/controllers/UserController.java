@@ -12,6 +12,7 @@ import com.alkemy.Jp.repositories.RoleRepository;
 import com.alkemy.Jp.repositories.UserRepository;
 import com.alkemy.Jp.security.jwt.JwtUtils;
 import com.alkemy.Jp.security.services.UserDetailsImp;
+import com.alkemy.Jp.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,6 +47,9 @@ public class UserController {
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    EmailService emailService;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -111,6 +115,7 @@ public class UserController {
         user.setRoles(roles);
         userRepository.save(user);
 
+        emailService.enviarCorreo(signUpRequest.getEmail(), "Alkemy Challenge Java","Usuario registrado correctamente.");
         return ResponseEntity.ok(new MessageResponse("Usuario registrado correctamente"));
 
     }
